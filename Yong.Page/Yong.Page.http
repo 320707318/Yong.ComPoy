@@ -1,0 +1,6 @@
+@Yong.Page_HostAddress = http://localhost:5271
+
+GET {{Yong.Page_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

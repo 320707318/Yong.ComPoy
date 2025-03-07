@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nacos-sdk-csharp" Version="1.3.8" />
+    <PackageReference Include="nacos-sdk-csharp.AspNetCore" Version="1.3.8" />
+    <PackageReference Include="nacos-sdk-csharp.Extensions.Configuration" Version="1.3.8" />
+    <PackageReference Include="Ocelot" Version="23.3.3" />
+    <PackageReference Include="Ocelot.Cache.CacheManager" Version="23.3.3" />
+    <PackageReference Include="Ocelot.Provider.Nacos" Version="1.3.5" />
+    <PackageReference Include="Ocelot.Provider.Polly" Version="23.3.3" />
+  </ItemGroup>
+
+</Project>

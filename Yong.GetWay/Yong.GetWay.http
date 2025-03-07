@@ -1,0 +1,6 @@
+@Yong.GetWay_HostAddress = http://localhost:5261
+
+GET {{Yong.GetWay_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

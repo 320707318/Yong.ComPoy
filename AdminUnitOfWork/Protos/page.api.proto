@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "Yong.Page.Api.DataContracts";
+
+package greet;
+
+// The greeting service definition.
+service PageApi {
+  // Sends a greeting
+  rpc GetPageById (GetPageReq) returns (PageRes);
+}
+
+// The request message containing the user's name.
+message GetPageReq {
+  int64 Id = 1;
+}
+
+// The response message containing the greetings.
+message PageRes {
+        int64 Id = 1;
+        string Content =2;
+        string Title=3;
+        int64 CreateTime=4;
+        int64 LikeCount = 5;
+        int64 CommentCount = 6;
+        int64 ForwardCount = 7;
+        int64 CollectCount=8;
+        repeated ResourceRes Resources =9;
+}
+message ResourceRes{
+         int64 Id =1;
+         string Name =2;
+         string Url =3;
+         int32 Type =4;
+         int32 Sort =5;
+         int32 Status =6;
+}

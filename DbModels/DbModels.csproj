@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FreeSql" Version="3.2.833" />
+    <PackageReference Include="FreeSql.Provider.MySql" Version="3.2.833" />
+    <PackageReference Include="FreeSql.Repository" Version="3.2.833" />
+    <PackageReference Include="IPTools.China" Version="1.6.0" />
+    <PackageReference Include="RestSharp" Version="112.0.0" />
+  </ItemGroup>
+
+</Project>

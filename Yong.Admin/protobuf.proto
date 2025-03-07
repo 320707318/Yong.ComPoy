@@ -1,0 +1,20 @@
+syntax = "proto3";
+ 
+ 
+option csharp_namespace ="Yong.Admin";
+package Admin;
+ 
+service AdminApi{
+ 
+rpc GetProduct(GetProductRequest) returns(GetProductResponse);
+}
+ 
+//请求消息体
+message GetProductRequest{
+int32 Id=1;
+}
+//返回消息体 
+message GetProductResponse{
+string productName=1;
+}
+ 
