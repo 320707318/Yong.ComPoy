@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DbModels\DbModels.csproj" />
     <ProjectReference Include="..\Middleware\Middleware.csproj" />
+    <ProjectReference Include="..\UserUnitOfWork\UserUnitOfWork.csproj" />
   </ItemGroup>
 
 </Project>

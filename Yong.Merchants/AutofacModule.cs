@@ -1,4 +1,7 @@
-﻿namespace Yong.Admin
+﻿using MerchantsUnitOfWork;
+using MerchantsUnitOfWork.UnitOfWorks;
+
+namespace Yong.Admin
 {
     public static class AutofacModule
     {
@@ -15,6 +18,7 @@
                     .Build();
                 return fsql;
             };
+            services.AddScoped<IOauthUOW,OauthUOW>();
             services.AddSingleton(fsqlFactory);
             services.AddCap(x =>
             {

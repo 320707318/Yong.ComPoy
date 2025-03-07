@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MerchantsUnitOfWork;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Yong.Merchants.Controllers
@@ -7,12 +8,17 @@ namespace Yong.Merchants.Controllers
     [ApiController]
     public class OauthController : ControllerBase
     {
-        public OauthController() { }
+        private readonly IOauthUOW _oauthUOW;
 
-        [HttpGet]
-        public string GetAll()
+        public OauthController(IOauthUOW oauthUOW)
         {
-            return "This is a test";
+            this._oauthUOW = oauthUOW;
+        }
+
+        [HttpPost]
+        public async Task<string> UpLoadImage(IFormFile file) 
+        {
+            return await _oauthUOW.UpLoadImage(file);
         }
     }
 }
