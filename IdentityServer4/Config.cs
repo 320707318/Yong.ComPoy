@@ -23,7 +23,8 @@ namespace IdentityServer
                 new ApiScope("UserServices_scope"),
                 new ApiScope("PageServices_scope"),
                 new ApiScope("ImServices_scope"),
-                new ApiScope("AdminServices_scope")
+                new ApiScope("AdminServices_scope"),
+                 new ApiScope("MerchantsServices_scope")
 
             };
         public static IEnumerable<ApiResource> GetApiResources()
@@ -33,7 +34,8 @@ namespace IdentityServer
                 new ApiResource("UserServices","UserServices"){ Scopes={ "UserServices_scope" } ,ApiSecrets=new List<Secret>{new Secret("123456".Sha256()) }},
                 new ApiResource("PageServices","PageServices"){ Scopes={ "PageServices_scope" } ,ApiSecrets=new List<Secret>{new Secret("123456".Sha256()) }},
                 new ApiResource("ImServices","ImServices"){ Scopes={ "ImServices_scope" } ,ApiSecrets=new List<Secret>{new Secret("123456".Sha256()) }},
-                new ApiResource("AdminServices","AdminServices"){ Scopes={ "AdminServices_scope" } ,ApiSecrets=new List<Secret>{new Secret("123456".Sha256()) }}
+                new ApiResource("AdminServices","AdminServices"){ Scopes={ "AdminServices_scope" } ,ApiSecrets=new List<Secret>{new Secret("123456".Sha256()) }},
+                new ApiResource("MerchantsServices","MerchantsServices"){ Scopes={ "MerchantsServices_scope" } ,ApiSecrets=new List<Secret>{new Secret("123456".Sha256()) }}
             };
         }
         public static IEnumerable<Client> GetClients()
@@ -52,6 +54,7 @@ namespace IdentityServer
                         "UserServices_scope",
                         "ImServices_scope",
                         "AdminServices_scope",
+                        "MerchantsServices_scope",
                         IdentityServerConstants.StandardScopes.OpenId, //必须要添加，否则报403 forbidden错误
                         IdentityServerConstants.StandardScopes.Profile
                    }

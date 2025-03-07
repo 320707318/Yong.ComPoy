@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cnblogs.IdentityServer4.AccessTokenValidation" Version="3.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MerchantsUnitOfWork\MerchantsUnitOfWork.csproj" />
+    <ProjectReference Include="..\NeuGet\NeuGet.csproj" />
   </ItemGroup>
 
 </Project>

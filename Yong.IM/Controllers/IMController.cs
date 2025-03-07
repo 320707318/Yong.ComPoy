@@ -27,7 +27,7 @@ namespace Yong.IM.Controllers
         public  string GetUrl()
         {
             var url = ImHelper.PrevConnectServer(uid, "");
-            return url.Replace("127.0.0.1", "192.168.0.107");
+            return url.Replace("127.0.0.1", "192.168.0.100");
         }
         [HttpGet]
         public List<long> ImGet()

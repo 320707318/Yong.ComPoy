@@ -62,6 +62,17 @@ builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.Authenti
                     options.SupportedTokens = SupportedTokens.Both;
 
                 });
+authenticationProviderKey = "auth_merchants";
+builder.Services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(authenticationProviderKey, options =>
+                {
+                    options.ApiSecret = "123456";
+                    options.Authority = "http://localhost:5001/auth";
+                    options.RequireHttpsMetadata = false;
+                    options.ApiName = "MerchantsServices";
+                    options.SupportedTokens = SupportedTokens.Both;
+
+                });
 builder.Services.AddOcelot()
     .AddPolly()
     .AddCacheManager(x =>
