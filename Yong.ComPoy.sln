@@ -63,6 +63,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gRpc", "gRpc\gRpc.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Page.DataContracts", "Page.DataContracts\Page.DataContracts.csproj", "{F36E629F-1EAA-4801-885A-B39E306CC2E5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MerchantsService", "MerchantsService", "{AC4807F6-8D70-458B-A2D9-10AC008E4E84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yong.Merchants", "Yong.Merchants\Yong.Merchants.csproj", "{489F5454-B0BD-4D66-B460-BB86E56384A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +157,10 @@ Global
 		{F36E629F-1EAA-4801-885A-B39E306CC2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F36E629F-1EAA-4801-885A-B39E306CC2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F36E629F-1EAA-4801-885A-B39E306CC2E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489F5454-B0BD-4D66-B460-BB86E56384A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489F5454-B0BD-4D66-B460-BB86E56384A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489F5454-B0BD-4D66-B460-BB86E56384A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489F5454-B0BD-4D66-B460-BB86E56384A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -180,6 +188,7 @@ Global
 		{6C366F6E-53AC-4C58-93C9-10730D05D298} = {E9F985DC-D18D-44C4-AD7C-52B4AB6E5831}
 		{CB8631E2-6C94-4145-AF48-A81C830F2B2C} = {0E2C2BAD-5633-485C-838E-C184C81521D4}
 		{F36E629F-1EAA-4801-885A-B39E306CC2E5} = {B15A5CFF-FEB3-4180-B0F0-43B7D004D682}
+		{489F5454-B0BD-4D66-B460-BB86E56384A8} = {AC4807F6-8D70-458B-A2D9-10AC008E4E84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {53A13875-844D-4201-A3CA-CFDEDA56DBE7}
