@@ -22,6 +22,7 @@ namespace Yong.Admin
                 return fsql;
             };
             services.AddScoped<IOauthUOW,OauthUOW>();
+            services.AddScoped<IProductUOW, ProductUOW>();
             services.AddSingleton<IMailService, MailService>();
 
             services.AddTransient<IMerchantsEventBus, MerchantsEventBus>();

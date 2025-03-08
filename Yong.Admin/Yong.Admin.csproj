@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Admin.EventBus\Admin.EventBus.csproj" />
     <ProjectReference Include="..\AdminUnitOfWork\AdminUnitOfWork.csproj" />
     <ProjectReference Include="..\Merchants.EventBus\Merchants.EventBus.csproj" />
     <ProjectReference Include="..\Middleware\Middleware.csproj" />

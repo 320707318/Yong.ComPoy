@@ -41,5 +41,6 @@ namespace Yong.Merchants.Controllers
         {
             return await _oauthUOW.MerchantsReg(req);
         }
+
     }
 }

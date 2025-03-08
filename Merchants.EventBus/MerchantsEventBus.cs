@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using DbModels;
+using DbModels.merchants;
 using DotNetCore.CAP;
 using FreeSql;
 using Middleware.Cap.Mq;
@@ -17,12 +19,18 @@ namespace Merchants.EventBus
     {
         private readonly IMailService _mailService;
         private readonly IBaseRepository<DbModels.merchants.Merchants> _mRepository;
+        private readonly IBaseRepository<Product> _productRepository;
+
         //private readonly ElasticClient _elasticsearch;
 
-        public MerchantsEventBus(IMailService mailService, IBaseRepository<DbModels.merchants.Merchants> mRepository)
+        public MerchantsEventBus(
+            IMailService mailService, 
+            IBaseRepository<DbModels.merchants.Merchants> mRepository,
+            IBaseRepository<Product> productRepository)
         {
             this._mailService = mailService;
             this._mRepository = mRepository;
+            this._productRepository = productRepository;
             //this._elasticsearch = elasticsearch;
         }
         [CapSubscribe("Reg.Email.Code")]
@@ -44,6 +52,22 @@ namespace Merchants.EventBus
                 signature = mqDto.signature,
                 UserName = "shop_" + mqDto.Id + mqDto.Email.Substring(0, 5)
             });
+        }
+        [CapSubscribe("Product.Add")]
+        public async Task AddProduct(ProductAddDto mqDto)
+        {
+           var product = await _productRepository.InsertAsync(new Product
+            {
+                MerchantId = mqDto.MerchantId,
+                ProductName = mqDto.ProductName,
+                Price = mqDto.Price,
+                ProducRemark = mqDto.ProducRemark,
+                ProductContent = mqDto.ProductContent,
+                ProductImgs = mqDto.ProductImgs,
+                ProductDesc = mqDto.ProductDesc,
+                Stock = mqDto.Stock
+            });
+            await RedisHelper.cli.SetAsync("Product:Db:"+product.Id, JsonSerializer.Serialize(product));
         }
     }
 }

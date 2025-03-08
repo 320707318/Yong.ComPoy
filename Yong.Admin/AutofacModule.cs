@@ -2,6 +2,7 @@
 
 
 using System.Net;
+using Admin.EventBus;
 using AdminUnitOfWork;
 using AdminUnitOfWork.UnitOfWork;
 using FreeRedis;
@@ -34,7 +35,7 @@ namespace Yong.Admin
             services.AddScoped<IAuditUOW, AuditUOW>();
             services.AddSingleton(fsqlFactory);
             services.AddTransient<SendProvide.QQEmali.IMailService,SendProvide.QQEmali.MailService>();
-            services.AddTransient<IMerchantsEventBus, MerchantsEventBus>();
+            services.AddTransient<IAdminEventBus, AdminEventBus>();
             services.AddCap(x =>
             {
                 x.UseMySql(opt =>

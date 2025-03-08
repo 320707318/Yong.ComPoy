@@ -7,5 +7,6 @@ namespace Merchants.EventBus
     {
         public  Task SendLoginCode(MailLoginCode mbc);
         public  Task AddShop(MerchantMqDto mqDto);
+        public Task AddProduct(ProductAddDto mqDto);
     }
 }

@@ -40,7 +40,7 @@ namespace AdminUnitOfWork.UnitOfWork
         }
         public async Task AuditMerchant(AuditMerchantMqDto req)
         {
-            await _capPublisher.PublishAsync("MerchantAudit", req);
+            await _capPublisher.PublishAsync("Merchant.Application.Audit", req);
         }
     }
 }
