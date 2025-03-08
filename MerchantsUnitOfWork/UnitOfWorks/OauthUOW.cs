@@ -89,6 +89,16 @@ namespace MerchantsUnitOfWork.UnitOfWorks
             {
                 return new DefaultMesRes { Code = 401, Message = "已有相同申请" };
             }
+            await _capPublisher.PublishAsync("Merchant.Application.Add", new MerchantMqDto
+            {
+                Email = req.Email,
+                PassWord = req.PassWord,
+                Description = req.Description,
+                ShopName = req.ShopName,
+                IDCardPhoto = req.IDCardPhoto,
+                BusinessLicense = req.BusinessLicense,
+                signature = req.signature
+            });
             return new DefaultMesRes { Code = 200, Message = "申请成功" };
 
         }

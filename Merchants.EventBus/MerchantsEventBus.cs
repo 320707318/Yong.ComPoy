@@ -31,5 +31,19 @@ namespace Merchants.EventBus
             await _mailService.SendEmailAsync(mbc.mail);
             await RedisHelper.cli.SetAsync("Reg.Email.Code" + mbc.mail.ToEmail, mbc.code, 60 * 10);
         }
+        [CapSubscribe("Merchant.AddShop")]
+        public  async Task AddShop(MerchantMqDto mqDto)
+        {
+            await _mRepository.InsertAsync(new DbModels.merchants.Merchants
+            {
+                Email = mqDto.Email,
+                BusinessLicense = mqDto.BusinessLicense,
+                Description = mqDto.Description,
+                IDCardPhoto = mqDto.IDCardPhoto,
+                ShopName = mqDto.ShopName,
+                signature = mqDto.signature,
+                UserName = "shop_" + mqDto.Id + mqDto.Email.Substring(0, 5)
+            });
+        }
     }
 }

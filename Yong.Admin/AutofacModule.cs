@@ -5,6 +5,8 @@ using System.Net;
 using AdminUnitOfWork;
 using AdminUnitOfWork.UnitOfWork;
 using FreeRedis;
+using MailKit;
+using Merchants.EventBus;
 using Microsoft.Extensions.DependencyInjection;
 using Middleware.ES;
 using Middleware.Redis;
@@ -31,6 +33,8 @@ namespace Yong.Admin
             };
             services.AddScoped<IAuditUOW, AuditUOW>();
             services.AddSingleton(fsqlFactory);
+            services.AddTransient<SendProvide.QQEmali.IMailService,SendProvide.QQEmali.MailService>();
+            services.AddTransient<IMerchantsEventBus, MerchantsEventBus>();
             services.AddCap(x =>
             {
                 x.UseMySql(opt =>

@@ -7,21 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Protos\page.api.proto" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Admin.DataContracts\Admin.DataContracts.csproj" />
     <ProjectReference Include="..\DbModels\DbModels.csproj" />
     <ProjectReference Include="..\Middleware\Middleware.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Protobuf Include="Protos\page.api.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>
