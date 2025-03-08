@@ -24,7 +24,6 @@ namespace MerchantsUnitOfWork.UnitOfWorks
             using var stream = file.OpenReadStream();
             var name = "Merchants/" + DateTimeOffset.Now.ToUnixTimeSeconds() + file.FileName;
             await ObsHelper.UploadImageFile(stream, name);
-            //await _capPublisher.PublishAsync("Upload.Resource", new ObsMqReq { Name = name, Stream = (FileStream)stream });
             return "https://obs-bucked.obs.cn-south-1.myhuaweicloud.com/" + name;
         }
     }
