@@ -1,4 +1,7 @@
+using System.Net;
+using AdminUnitOfWork.gRpcServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Nacos.AspNetCore.V2;
 using Yong.Admin;
 
@@ -10,7 +13,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(6004, o => o.Protocols = HttpProtocols.Http2);
+    options.Listen(IPAddress.Any, 5004, o => o.Protocols = HttpProtocols.Http1);
+});
 builder.Services.AddNacosAspNet(builder.Configuration, "nacos");
 //builder.Configuration.AddNacosV2Configuration(builder.Configuration.GetSection("nacos"));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -39,5 +46,5 @@ if(app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapGrpcService<AdminService>();
 app.Run();

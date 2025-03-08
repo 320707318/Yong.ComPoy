@@ -6,16 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-
+	<ItemGroup>
+		<None Remove="Protos\admin.api.proto" />
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\gRpc\gRpc.csproj" />
   </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
+	</ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
-
-    <Protobuf Include="Protos\protobuf.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\admin.api.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

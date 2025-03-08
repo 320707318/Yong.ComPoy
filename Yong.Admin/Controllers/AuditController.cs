@@ -8,7 +8,7 @@ namespace Yong.Admin.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AuditController : ControllerBase
     {
         private readonly IAuditUOW _audit;

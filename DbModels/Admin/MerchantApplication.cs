@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using FreeSql.DataAnnotations;
 
-namespace DbModels.merchants
+namespace DbModels.Admin
 {
-    public class Merchants
+    public class MerchantApplication
     {
         [Column(IsIdentity = true, IsPrimary = true)]
         public long Id { get; set; }
         public string ShopName { get; set; }
-        public string Avatar { get; set; } = "https://obs-bucked.obs.cn-south-1.myhuaweicloud.com/Merchants/1741417691Shop.png";
         public string Description { get; set; }
         public string Email { get; set; }
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
         public string IDCardPhoto { get; set; }
         public string BusinessLicense { get; set; }
         public string signature { get; set; }
+
+        public int Status { get; set; } = 0;
+        public long CreateTime { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     }
 }

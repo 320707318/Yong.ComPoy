@@ -49,7 +49,7 @@ namespace Yong.Admin
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
             services.AddGrpcClient<PageApiClient>(options =>
             {
-                options.Address = new Uri("http://localhost:5012");
+                options.Address = new Uri("http://localhost:6002");
             }).ConfigureChannel(grpcOptions =>
             {
                 //可以完成各种配置，比如token

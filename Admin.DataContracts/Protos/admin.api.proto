@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "Admin.DataContracts";
+
+package greet;
+
+// The greeting service definition.
+service AdminApi {
+  // Sends a greeting
+  rpc GetMerchantById (GetMerchantIdReq) returns (MerchantsRes);
+}
+
+// The request message containing the user's name.
+message GetMerchantIdReq {
+  string Email = 1;
+}
+
+// The response message containing the greetings.
+message MerchantsRes {
+  int64 Id = 1;
+  string ShopName = 2;
+  string Description = 3;
+  string Email = 4;
+  string IDCardPhoto =5;
+  string BusinessLicense =6;
+  string signature=7;
+}

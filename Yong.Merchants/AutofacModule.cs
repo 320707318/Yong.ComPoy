@@ -1,5 +1,8 @@
-﻿using MerchantsUnitOfWork;
+﻿using Merchants.EventBus;
+using MerchantsUnitOfWork;
 using MerchantsUnitOfWork.UnitOfWorks;
+using SendProvide.QQEmali;
+using static Admin.DataContracts.AdminApi;
 
 namespace Yong.Admin
 {
@@ -12,13 +15,16 @@ namespace Yong.Admin
             Func<IServiceProvider, IFreeSql> fsqlFactory = r =>
             {
                 IFreeSql fsql = new FreeSql.FreeSqlBuilder()
-                    .UseConnectionString(FreeSql.DataType.MySql, @"Data Source=119.29.202.87;Port=3306;User ID=Merchants;Password=123456; Initial Catalog=Merchants;Charset=utf8; SslMode=none;Min pool size=5")
+                    .UseConnectionString(FreeSql.DataType.MySql, @"Data Source=119.29.202.87;Port=3306;User ID=merchants;Password=123456; Initial Catalog=merchants;Charset=utf8; SslMode=none;Min pool size=5")
                     .UseMonitorCommand(cmd => Console.WriteLine($"Sql：{cmd.CommandText}"))//监听SQL语句
                     .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
                     .Build();
                 return fsql;
             };
             services.AddScoped<IOauthUOW,OauthUOW>();
+            services.AddSingleton<IMailService, MailService>();
+
+            services.AddTransient<IMerchantsEventBus, MerchantsEventBus>();
             services.AddSingleton(fsqlFactory);
             services.AddCap(x =>
             {
@@ -35,14 +41,14 @@ namespace Yong.Admin
                 });
             });
             #region gRPC Client注册
-            //AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-            //services.AddGrpcClient<PageApiClient>(options =>
-            //{
-            //    options.Address = new Uri("http://localhost:5012");
-            //}).ConfigureChannel(grpcOptions =>
-            //{
-            //    //可以完成各种配置，比如token
-            //});
+            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+            services.AddGrpcClient<AdminApiClient>(options =>
+            {
+                options.Address = new Uri("http://localhost:6004");
+            }).ConfigureChannel(grpcOptions =>
+            {
+                //可以完成各种配置，比如token
+            });
             #endregion
 
             return services;
